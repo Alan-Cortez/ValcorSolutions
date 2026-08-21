@@ -8,6 +8,10 @@
     "start": "next start",
     "lint": "eslint"
   },
+  "allowScripts": {
+    "unrs-resolver": true,
+    "@libsql/client": true
+  },
   "dependencies": {
     "@libsql/client": "^0.17.4",
     "framer-motion": "^13.1.0",
