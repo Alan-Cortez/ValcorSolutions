@@ -16,10 +16,10 @@ export default function HomePage() {
       <Navbar />
       <main>
         <Hero />
+        <Stats />
         <Services />
         <Portfolio />
         <Process />
-        <Stats />
         <Reviews />
         <FAQ />
         <Contact />
