@@ -27,7 +27,7 @@ export default function Navbar() {
       style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
         transition: 'all 0.4s ease',
-        background: scrolled ? 'rgba(12,12,12,0.94)' : 'transparent',
+        background: scrolled ? 'rgba(8,12,20,0.94)' : 'transparent',
         backdropFilter: scrolled ? 'blur(20px)' : 'none',
         borderBottom: scrolled ? '1px solid var(--bg-border)' : '1px solid transparent',
       }}
@@ -76,7 +76,7 @@ export default function Navbar() {
       {/* Mobile drawer */}
       {open && (
         <div style={{
-          background: 'rgba(12,12,12,0.98)',
+          background: 'rgba(8,12,20,0.98)',
           backdropFilter: 'blur(20px)',
           borderTop: '1px solid var(--bg-border)',
           padding: '1.5rem',

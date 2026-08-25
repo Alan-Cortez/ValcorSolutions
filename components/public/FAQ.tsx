@@ -48,7 +48,7 @@ export default function FAQ() {
             FAQ
           </div>
           <h2 className="text-headline">
-            Preguntas frecuentes
+            Preguntas <span className="accent">frecuentes</span>
           </h2>
         </motion.div>
 
