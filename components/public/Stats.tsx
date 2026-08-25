@@ -7,8 +7,8 @@ import { FolderOpen, Users, Sparkles, Globe } from 'lucide-react';
 const stats = [
   { value: 50, suffix: '+', label: 'Proyectos completados', Icon: FolderOpen },
   { value: 30, suffix: '+', label: 'Clientes satisfechos',  Icon: Users },
-  { value: 5,  suffix: '',  label: 'Años de experiencia',  Icon: Sparkles },
-  { value: 12, suffix: '',  label: 'Países alcanzados',     Icon: Globe },
+  { value: 5,  suffix: '',  label: 'Años de experiencia',   Icon: Sparkles },
+  { value: 12, suffix: '',  label: 'Países alcanzados',      Icon: Globe },
 ];
 
 function Counter({ target, suffix }: { target: number; suffix: string }) {
@@ -45,59 +45,38 @@ export default function Stats() {
         borderTop: '1px solid var(--bg-border)',
         borderBottom: '1px solid var(--bg-border)',
         background: 'var(--bg-secondary)',
-        padding: '0',
       }}
     >
       <div className="container">
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-          }}
-        >
+        <div className="stats-grid">
           {stats.map((stat, i) => {
             const Icon = stat.Icon;
             return (
               <motion.div
                 key={stat.label}
+                className="stat-item"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.09 }}
-                style={{
-                  padding: '2.5rem 2rem',
-                  borderRight: i < 3 ? '1px solid var(--bg-border)' : 'none',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.75rem',
-                }}
               >
-                {/* Icon */}
                 <Icon size={18} color="var(--text-muted)" strokeWidth={1.5} />
-
-                {/* Number */}
-                <div
-                  style={{
-                    fontSize: 'clamp(2rem, 4vw, 3rem)',
-                    fontWeight: 900,
-                    letterSpacing: '-0.05em',
-                    color: 'var(--white)',
-                    lineHeight: 1,
-                  }}
-                >
+                <div style={{
+                  fontSize: 'clamp(1.75rem, 5vw, 3rem)',
+                  fontWeight: 900,
+                  letterSpacing: '-0.05em',
+                  color: 'var(--white)',
+                  lineHeight: 1,
+                }}>
                   <Counter target={stat.value} suffix={stat.suffix} />
                 </div>
-
-                {/* Label */}
-                <div
-                  style={{
-                    fontSize: '0.72rem',
-                    fontWeight: 600,
-                    letterSpacing: '0.1em',
-                    textTransform: 'uppercase',
-                    color: 'var(--text-muted)',
-                  }}
-                >
+                <div style={{
+                  fontSize: '0.7rem',
+                  fontWeight: 600,
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  color: 'var(--text-muted)',
+                }}>
                   {stat.label}
                 </div>
               </motion.div>
@@ -107,9 +86,47 @@ export default function Stats() {
       </div>
 
       <style>{`
-        @media (max-width: 640px) {
-          #metricas .container > div { grid-template-columns: repeat(2, 1fr) !important; }
-          #metricas .container > div > div { border-right: none !important; border-bottom: 1px solid var(--bg-border); }
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+        }
+        .stat-item {
+          padding: 2.5rem 1.75rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+          border-right: 1px solid var(--bg-border);
+        }
+        .stat-item:last-child {
+          border-right: none;
+        }
+
+        /* Tablet: 2 columns */
+        @media (max-width: 768px) {
+          .stats-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          .stat-item {
+            border-right: none !important;
+            border-bottom: 1px solid var(--bg-border);
+          }
+          .stat-item:nth-child(odd) {
+            border-right: 1px solid var(--bg-border) !important;
+          }
+          .stat-item:nth-last-child(-n+2) {
+            border-bottom: none;
+          }
+          .stat-item {
+            padding: 2rem 1.5rem !important;
+          }
+        }
+
+        /* Mobile: 2 columns compact */
+        @media (max-width: 480px) {
+          .stat-item {
+            padding: 1.5rem 1rem !important;
+            gap: 0.5rem !important;
+          }
         }
       `}</style>
     </section>

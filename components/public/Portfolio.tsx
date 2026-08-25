@@ -1,10 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowUpRight, ExternalLink } from 'lucide-react';
 import { useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
 
 const categories = ['Todos', 'Web', 'E-commerce', 'App'];
 
@@ -87,17 +85,9 @@ export default function Portfolio() {
       style={{ background: 'var(--bg-secondary)', borderTop: '1px solid var(--bg-border)' }}
     >
       <div className="container">
+
         {/* Header row */}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-end',
-            marginBottom: '3.5rem',
-            flexWrap: 'wrap',
-            gap: '1.5rem',
-          }}
-        >
+        <div className="portfolio-header">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -135,18 +125,8 @@ export default function Portfolio() {
           </div>
         </div>
 
-        {/* Grid — magazine layout */}
-        <motion.div
-          layout
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '1px',
-            background: 'var(--bg-border)',
-            borderRadius: 'var(--radius-md)',
-            overflow: 'hidden',
-          }}
-        >
+        {/* Grid */}
+        <motion.div layout className="portfolio-grid">
           <AnimatePresence mode="popLayout">
             {filtered.map((project) => (
               <motion.div
@@ -159,61 +139,48 @@ export default function Portfolio() {
                 onClick={() => setSelected(project)}
                 style={{
                   background: project.color,
-                  padding: '2.5rem 2rem 2rem',
+                  padding: '2.25rem 1.75rem 1.75rem',
                   cursor: 'pointer',
                   position: 'relative',
                   overflow: 'hidden',
-                  minHeight: '280px',
+                  minHeight: '260px',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  transition: 'filter 0.3s',
                 }}
                 whileHover={{ filter: 'brightness(1.18)' }}
               >
-                {/* Glow */}
                 <div style={{
-                  position: 'absolute',
-                  top: -60, right: -60,
+                  position: 'absolute', top: -60, right: -60,
                   width: 160, height: 160,
                   background: `radial-gradient(circle, ${project.accent}35 0%, transparent 70%)`,
                   pointerEvents: 'none',
                 }} />
 
-                {/* Top: category tag */}
                 <div>
                   <span style={{
-                    display: 'block',
-                    fontSize: '0.65rem',
-                    fontWeight: 700,
-                    letterSpacing: '0.12em',
-                    textTransform: 'uppercase',
-                    color: project.accent,
-                    marginBottom: '1rem',
+                    display: 'block', fontSize: '0.62rem', fontWeight: 700,
+                    letterSpacing: '0.12em', textTransform: 'uppercase',
+                    color: project.accent, marginBottom: '0.875rem',
                   }}>
                     {project.tag}
                   </span>
                   <h3 style={{
-                    fontSize: '1.2rem',
-                    fontWeight: 800,
-                    letterSpacing: '-0.02em',
-                    color: 'var(--white)',
+                    fontSize: '1.1rem', fontWeight: 800,
+                    letterSpacing: '-0.02em', color: 'var(--white)',
                     lineHeight: 1.25,
-                    marginBottom: '0.75rem',
                   }}>
                     {project.title}
                   </h3>
                 </div>
 
-                {/* Bottom: tech + arrow */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-                  <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: '1.5rem' }}>
+                  <div style={{ display: 'flex', gap: '0.35rem', flexWrap: 'wrap' }}>
                     {project.tech.slice(0, 2).map((t) => (
                       <span key={t} style={{
-                        padding: '0.2rem 0.55rem',
+                        padding: '0.18rem 0.5rem',
                         borderRadius: 'var(--radius-sm)',
-                        fontSize: '0.65rem',
-                        fontWeight: 500,
+                        fontSize: '0.62rem', fontWeight: 500,
                         background: 'rgba(255,255,255,0.08)',
                         color: 'rgba(255,255,255,0.45)',
                         border: '1px solid rgba(255,255,255,0.08)',
@@ -223,15 +190,13 @@ export default function Portfolio() {
                     ))}
                   </div>
                   <div style={{
-                    width: 36, height: 36,
-                    borderRadius: '50%',
+                    width: 34, height: 34, borderRadius: '50%',
                     background: 'rgba(255,255,255,0.08)',
                     border: '1px solid rgba(255,255,255,0.12)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    flexShrink: 0,
-                    marginLeft: '1rem',
+                    flexShrink: 0, marginLeft: '0.75rem',
                   }}>
-                    <ArrowUpRight size={15} color="rgba(255,255,255,0.6)" />
+                    <ArrowUpRight size={14} color="rgba(255,255,255,0.6)" />
                   </div>
                 </div>
               </motion.div>
@@ -250,10 +215,9 @@ export default function Portfolio() {
             onClick={() => setSelected(null)}
             style={{
               position: 'fixed', inset: 0, zIndex: 200,
-              background: 'rgba(0,0,0,0.8)',
-              backdropFilter: 'blur(10px)',
+              background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(10px)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              padding: '1.5rem',
+              padding: '1.25rem',
             }}
           >
             <motion.div
@@ -265,41 +229,38 @@ export default function Portfolio() {
                 background: 'var(--bg-surface)',
                 border: '1px solid var(--bg-border)',
                 borderRadius: 'var(--radius-lg)',
-                padding: '3rem',
-                maxWidth: 560,
+                padding: '2.5rem',
+                maxWidth: 520,
                 width: '100%',
+                maxHeight: '90vh',
+                overflowY: 'auto',
               }}
             >
-              <span style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: selected.accent }}>
+              <span style={{ fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: selected.accent }}>
                 {selected.category}
               </span>
-              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, letterSpacing: '-0.025em', margin: '0.75rem 0 1rem' }}>
+              <h2 style={{ fontSize: 'clamp(1.3rem, 4vw, 1.75rem)', fontWeight: 800, letterSpacing: '-0.025em', margin: '0.75rem 0 1rem' }}>
                 {selected.title}
               </h2>
               <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '2rem', fontSize: '0.9rem' }}>
                 {selected.description}
               </p>
-              <div>
-                <div style={{ fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '0.75rem' }}>
-                  Tecnologías
-                </div>
-                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                  {selected.tech.map((t) => (
-                    <span key={t} style={{
-                      padding: '0.3rem 0.75rem',
-                      borderRadius: 'var(--radius-sm)',
-                      fontSize: '0.78rem',
-                      fontWeight: 500,
-                      background: 'var(--bg-surface-2)',
-                      color: 'var(--text-secondary)',
-                      border: '1px solid var(--bg-border)',
-                    }}>
-                      {t}
-                    </span>
-                  ))}
-                </div>
+              <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '0.75rem' }}>
+                Tecnologías
               </div>
-              <div style={{ display: 'flex', gap: '0.75rem', marginTop: '2rem' }}>
+              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
+                {selected.tech.map((t) => (
+                  <span key={t} style={{
+                    padding: '0.3rem 0.75rem', borderRadius: 'var(--radius-sm)',
+                    fontSize: '0.78rem', fontWeight: 500,
+                    background: 'var(--bg-surface-2)', color: 'var(--text-secondary)',
+                    border: '1px solid var(--bg-border)',
+                  }}>
+                    {t}
+                  </span>
+                ))}
+              </div>
+              <div style={{ display: 'flex', gap: '0.75rem' }}>
                 <button onClick={() => setSelected(null)} className="btn btn-ghost" style={{ flex: 1, justifyContent: 'center' }}>
                   Cerrar
                 </button>
@@ -313,11 +274,39 @@ export default function Portfolio() {
       </AnimatePresence>
 
       <style>{`
-        @media (max-width: 900px) {
-          #proyectos .container > div:last-of-type > div { grid-template-columns: repeat(2, 1fr) !important; }
+        .portfolio-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          margin-bottom: 3rem;
+          gap: 1.5rem;
+          flex-wrap: wrap;
         }
-        @media (max-width: 600px) {
-          #proyectos .container > div:last-of-type > div { grid-template-columns: 1fr !important; }
+        .portfolio-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1px;
+          background: var(--bg-border);
+          border-radius: var(--radius-md);
+          overflow: hidden;
+        }
+
+        /* Tablet: 2 columns */
+        @media (max-width: 900px) {
+          .portfolio-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          .portfolio-header {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+          }
+        }
+
+        /* Mobile: 1 column */
+        @media (max-width: 560px) {
+          .portfolio-grid {
+            grid-template-columns: 1fr !important;
+          }
         }
       `}</style>
     </section>

@@ -43,147 +43,86 @@ export default function Contact() {
   };
 
   return (
-    <section
-      id="contacto"
-      style={{
-        borderTop: '1px solid var(--bg-border)',
-        background: 'var(--bg-primary)',
+    <section id="contacto" style={{ borderTop: '1px solid var(--bg-border)', background: 'var(--bg-primary)', overflow: 'hidden' }}>
+
+      {/* Big CTA block */}
+      <div style={{
+        borderBottom: '1px solid var(--bg-border)',
+        background: 'var(--bg-secondary)',
+        position: 'relative',
         overflow: 'hidden',
-      }}
-    >
-      {/* Big CTA block — editorial style */}
-      <div
-        style={{
-          borderBottom: '1px solid var(--bg-border)',
-          padding: '5rem 0',
-          background: 'var(--bg-secondary)',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Glow */}
+      }}>
         <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '30%',
+          position: 'absolute', top: '50%', left: '30%',
           transform: 'translate(-50%, -50%)',
-          width: '600px',
-          height: '300px',
+          width: '600px', height: '300px',
           background: 'radial-gradient(ellipse, rgba(37,99,235,0.07) 0%, transparent 70%)',
           pointerEvents: 'none',
         }} />
 
-        <div className="container">
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr auto',
-              gap: '4rem',
-              alignItems: 'center',
-            }}
+        <div className="container contact-cta-inner">
+          {/* Big text */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Big text */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <h2
-                style={{
-                  fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-                  fontWeight: 900,
-                  lineHeight: 0.95,
-                  letterSpacing: '-0.04em',
-                  textTransform: 'uppercase',
-                  color: 'var(--white)',
-                  marginBottom: '0.25rem',
-                }}
-              >
-                Creemos Algo
-              </h2>
-              <h2
-                style={{
-                  fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-                  fontWeight: 900,
-                  lineHeight: 0.95,
-                  letterSpacing: '-0.04em',
-                  textTransform: 'uppercase',
-                  color: 'transparent',
-                  WebkitTextStroke: '1.5px rgba(255,255,255,0.2)',
-                }}
-              >
-                Extraordinario
-              </h2>
-              <p style={{
-                marginTop: '1.5rem',
-                fontSize: '0.9rem',
-                color: 'var(--text-secondary)',
-                maxWidth: 380,
-                lineHeight: 1.7,
-              }}>
-                Actualmente disponible para proyectos freelance y colaboraciones. Respondemos en menos de 24 horas.
-              </p>
-            </motion.div>
+            <h2 className="contact-big-title">Creemos Algo</h2>
+            <h2 className="contact-big-title contact-big-outline">Extraordinario</h2>
+            <p style={{
+              marginTop: '1.25rem',
+              fontSize: '0.9rem',
+              color: 'var(--text-secondary)',
+              maxWidth: 380,
+              lineHeight: 1.7,
+            }}>
+              Actualmente disponible para proyectos freelance y colaboraciones.
+              Respondemos en menos de 24 horas.
+            </p>
+          </motion.div>
 
-            {/* Right: contact info + CTA */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              style={{ display: 'flex', flexDirection: 'column', gap: '1rem', minWidth: 260 }}
-            >
-              {[
-                { label: 'Email', value: 'contacto@valcor.dev' },
-                { label: 'Respuesta', value: 'Menos de 24 horas' },
-                { label: 'Ubicación', value: 'México' },
-              ].map((item) => (
-                <div key={item.label} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-                  <span style={{
-                    fontSize: '0.7rem',
-                    fontWeight: 700,
-                    letterSpacing: '0.1em',
-                    textTransform: 'uppercase',
-                    color: 'var(--text-muted)',
-                    minWidth: 70,
-                    paddingTop: '1px',
-                  }}>
-                    {item.label}
-                  </span>
-                  <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{item.value}</span>
-                </div>
-              ))}
+          {/* Right info */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="contact-cta-right"
+          >
+            {[
+              { label: 'Email',     value: 'contacto@valcor.dev' },
+              { label: 'Respuesta', value: 'Menos de 24 horas' },
+              { label: 'Ubicación', value: 'México' },
+            ].map((item) => (
+              <div key={item.label} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+                <span style={{
+                  fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.1em',
+                  textTransform: 'uppercase', color: 'var(--text-muted)',
+                  minWidth: 65, paddingTop: '1px',
+                }}>
+                  {item.label}
+                </span>
+                <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{item.value}</span>
+              </div>
+            ))}
 
-              <a
-                href="#contacto-form"
-                className="btn btn-primary"
-                style={{
-                  marginTop: '0.5rem',
-                  justifyContent: 'center',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                }}
-              >
-                Trabajemos Juntos <ArrowUpRight size={15} />
-              </a>
-            </motion.div>
-          </div>
+            <a
+              href="#contacto-form"
+              className="btn btn-primary"
+              style={{ marginTop: '0.5rem', justifyContent: 'center', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
+            >
+              Trabajemos Juntos <ArrowUpRight size={15} />
+            </a>
+          </motion.div>
         </div>
       </div>
 
       {/* Form section */}
       <div id="contacto-form" className="section">
         <div className="container">
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '5rem',
-              alignItems: 'start',
-            }}
-          >
+          <div className="contact-form-grid">
+
             {/* Left info */}
             <motion.div
               initial={{ opacity: 0, x: -24 }}
@@ -196,28 +135,21 @@ export default function Contact() {
                 Comencemos{' '}
                 <span style={{ color: 'var(--text-muted)', fontWeight: 400 }}>tu proyecto.</span>
               </h3>
-              <p className="text-body" style={{ color: 'var(--text-secondary)', marginBottom: '2.5rem', lineHeight: 1.8 }}>
+              <p style={{ color: 'var(--text-secondary)', marginBottom: '2.5rem', lineHeight: 1.8, fontSize: '0.95rem' }}>
                 Cuéntanos sobre tu idea. Respondemos con una propuesta inicial sin compromiso.
               </p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                 {[
-                  { label: 'Disponibilidad', value: 'Lunes a Viernes, 9:00 – 18:00' },
+                  { label: 'Disponibilidad',    value: 'Lunes a Viernes, 9:00 – 18:00' },
                   { label: 'Tiempo de respuesta', value: 'Menos de 24 horas' },
-                  { label: 'Propuesta inicial', value: 'Gratis y sin compromiso' },
+                  { label: 'Propuesta inicial',  value: 'Gratis y sin compromiso' },
                 ].map((item) => (
                   <div key={item.label}>
-                    <div style={{
-                      fontSize: '0.68rem',
-                      fontWeight: 700,
-                      letterSpacing: '0.15em',
-                      textTransform: 'uppercase',
-                      color: 'var(--text-muted)',
-                      marginBottom: '0.3rem',
-                    }}>
+                    <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '0.3rem' }}>
                       {item.label}
                     </div>
-                    <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>{item.value}</div>
+                    <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>{item.value}</div>
                   </div>
                 ))}
               </div>
@@ -235,21 +167,16 @@ export default function Contact() {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   style={{
-                    background: 'var(--bg-surface)',
-                    border: '1px solid var(--bg-border)',
-                    borderRadius: 'var(--radius-md)',
-                    padding: '3rem',
-                    textAlign: 'center',
+                    background: 'var(--bg-surface)', border: '1px solid var(--bg-border)',
+                    borderRadius: 'var(--radius-md)', padding: '3rem', textAlign: 'center',
                   }}
                 >
                   <div style={{
-                    width: 56, height: 56,
-                    borderRadius: '50%',
+                    width: 52, height: 52, borderRadius: '50%',
                     background: 'rgba(255,255,255,0.06)',
                     border: '1px solid rgba(255,255,255,0.12)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    margin: '0 auto 1.5rem',
-                    fontSize: '1.5rem',
+                    margin: '0 auto 1.5rem', fontSize: '1.3rem',
                   }}>
                     ✓
                   </div>
@@ -260,7 +187,7 @@ export default function Contact() {
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                  <div className="contact-form-row">
                     <div className="form-field">
                       <label className="form-label">Nombre</label>
                       <input name="name" value={form.name} onChange={handleChange} required placeholder="Tu nombre" className="form-input" />
@@ -291,12 +218,8 @@ export default function Contact() {
 
                   {error && <p style={{ fontSize: '0.85rem', color: '#f87171' }}>{error}</p>}
 
-                  <button
-                    type="submit"
-                    disabled={sending}
-                    className="btn btn-primary"
-                    style={{ width: '100%', justifyContent: 'center', opacity: sending ? 0.7 : 1 }}
-                  >
+                  <button type="submit" disabled={sending} className="btn btn-primary"
+                    style={{ width: '100%', justifyContent: 'center', opacity: sending ? 0.7 : 1 }}>
                     {sending ? 'Enviando...' : 'Enviar mensaje'}
                   </button>
                 </form>
@@ -307,9 +230,72 @@ export default function Contact() {
       </div>
 
       <style>{`
+        .contact-cta-inner {
+          display: grid;
+          grid-template-columns: 1fr auto;
+          gap: 4rem;
+          align-items: center;
+          padding-top: 5rem;
+          padding-bottom: 5rem;
+        }
+        .contact-big-title {
+          font-size: clamp(2.25rem, 6vw, 5rem);
+          font-weight: 900;
+          line-height: 0.95;
+          letter-spacing: -0.04em;
+          text-transform: uppercase;
+          color: var(--white);
+        }
+        .contact-big-outline {
+          color: transparent;
+          -webkit-text-stroke: 1.5px rgba(255,255,255,0.2);
+        }
+        .contact-cta-right {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          min-width: 240px;
+        }
+        .contact-form-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 5rem;
+          align-items: start;
+        }
+        .contact-form-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+        }
+
+        /* Tablet */
         @media (max-width: 900px) {
-          #contacto > div:first-child .container > div { grid-template-columns: 1fr !important; }
-          #contacto-form .container > div { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+          .contact-cta-inner {
+            grid-template-columns: 1fr !important;
+            gap: 2.5rem !important;
+            padding-top: 4rem !important;
+            padding-bottom: 4rem !important;
+          }
+          .contact-cta-right {
+            min-width: unset !important;
+          }
+          .contact-form-grid {
+            grid-template-columns: 1fr !important;
+            gap: 3rem !important;
+          }
+        }
+
+        /* Mobile */
+        @media (max-width: 560px) {
+          .contact-big-title {
+            font-size: clamp(2rem, 10vw, 2.5rem) !important;
+          }
+          .contact-big-outline {
+            -webkit-text-stroke: 1px rgba(255,255,255,0.2) !important;
+          }
+          .contact-form-row {
+            grid-template-columns: 1fr !important;
+          }
         }
       `}</style>
     </section>

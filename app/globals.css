@@ -137,6 +137,16 @@ ul, ol { list-style: none; }
   padding: 7rem 0;
 }
 
+@media (max-width: 768px) {
+  .container { padding: 0 1.25rem; }
+  .section { padding: 5rem 0; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 1rem; }
+  .section { padding: 4rem 0; }
+}
+
 /* Editorial section label — thin line + small caps */
 .section-label {
   display: inline-flex;
@@ -524,7 +534,6 @@ ul, ol { list-style: none; }
    RESPONSIVE
    ============================================ */
 @media (max-width: 768px) {
-  .section { padding: 5rem 0; }
   .admin-sidebar { display: none; }
   .admin-main { margin-left: 0; }
 }
