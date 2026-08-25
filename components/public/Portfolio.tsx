@@ -1,69 +1,69 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, ExternalLink } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { useState } from 'react';
 
-const categories = ['Todos', 'Web', 'E-commerce', 'App'];
+const categories = ['Todos', 'Tienda Online', 'Sitio Web', 'Aplicación'];
 
 const projects = [
   {
     id: 1,
-    title: 'Plataforma Inmobiliaria',
-    category: 'Web',
-    tag: 'UI/UX Design · Web Application',
-    description: 'Sitio web premium para agencia inmobiliaria con listados dinámicos, filtros avanzados y panel de gestión de propiedades.',
-    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Vercel'],
+    title: 'Agencia Inmobiliaria Apex',
+    category: 'Sitio Web',
+    result: '+80% más consultas por mes',
+    description: 'Rediseñamos su presencia digital por completo. Ahora los clientes los encuentran fácilmente y agendan citas directo desde el sitio.',
+    industry: 'Bienes Raíces',
     color: '#0f1a2e',
     accent: '#2563eb',
   },
   {
     id: 2,
-    title: 'Tienda de Moda Online',
-    category: 'E-commerce',
-    tag: 'Website Design · Branding',
-    description: 'E-commerce completo con carrito, checkout optimizado, integración de pagos y dashboard de ventas.',
-    tech: ['React', 'Node.js', 'Stripe', 'MongoDB'],
+    title: 'Boutique Elara',
+    category: 'Tienda Online',
+    result: '+40% ventas en 30 días',
+    description: 'Creamos su tienda online desde cero. Hoy venden ropa las 24 horas sin depender solo de Instagram.',
+    industry: 'Moda & Ropa',
     color: '#1a0f2e',
     accent: '#7c3aed',
   },
   {
     id: 3,
-    title: 'App de Gestión',
-    category: 'App',
-    tag: 'Mobile App Design · Health & Lifestyle',
-    description: 'Aplicación web progresiva para equipos con tableros Kanban, seguimiento de tiempo y reportes en tiempo real.',
-    tech: ['Vue.js', 'Firebase', 'PWA'],
+    title: 'Clínica Wellness Pro',
+    category: 'Aplicación',
+    result: 'Citas online: 0 → 120/mes',
+    description: 'Desarrollamos un portal donde sus pacientes reservan citas en línea. Eliminaron el 90% de llamadas telefónicas.',
+    industry: 'Salud & Bienestar',
     color: '#0a1a14',
     accent: '#059669',
   },
   {
     id: 4,
-    title: 'Portal Corporativo',
-    category: 'Web',
-    tag: 'UI/UX Design · Corporate',
-    description: 'Rediseño completo del portal institucional con sistema de blog, multi-idioma y optimización SEO avanzada.',
-    tech: ['Next.js', 'Sanity CMS', 'i18n'],
+    title: 'Corporativo Hernández',
+    category: 'Sitio Web',
+    result: 'Primer lugar en Google',
+    description: 'Construimos su sitio institucional optimizado para aparecer en búsquedas. Hoy sus clientes los encuentran antes que a la competencia.',
+    industry: 'Consultoría',
     color: '#1a1204',
     accent: '#d97706',
   },
   {
     id: 5,
-    title: 'Restaurante & Reservas',
-    category: 'Web',
-    tag: 'Website Design · Food & Lifestyle',
-    description: 'Sitio con sistema de reservaciones online, menú interactivo y galería de platos con animaciones fluidas.',
-    tech: ['React', 'Supabase', 'Framer Motion'],
+    title: 'Restaurante Lumina',
+    category: 'Sitio Web',
+    result: 'Reservas triplicadas',
+    description: 'Su nuevo sitio permite reservar mesa en segundos. Las reservas se triplicaron sin necesidad de contratar más personal.',
+    industry: 'Restaurantes',
     color: '#1a0808',
     accent: '#dc2626',
   },
   {
     id: 6,
-    title: 'Marketplace Servicios',
-    category: 'App',
-    tag: 'UI/UX Design · SaaS Platform',
-    description: 'Plataforma de dos lados para conectar profesionales con clientes, con chat en tiempo real y sistema de pagos.',
-    tech: ['Next.js', 'WebSockets', 'Stripe Connect'],
+    title: 'FinSecure Asesores',
+    category: 'Aplicación',
+    result: '60% menos tiempo en admin',
+    description: 'Portal para que sus clientes consulten estados de cuenta y documentos. Ahorraron horas de trabajo administrativo cada semana.',
+    industry: 'Finanzas',
     color: '#050f18',
     accent: '#0891b2',
   },
@@ -73,10 +73,9 @@ export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState('Todos');
   const [selected, setSelected] = useState<(typeof projects)[0] | null>(null);
 
-  const filtered =
-    activeCategory === 'Todos'
-      ? projects
-      : projects.filter((p) => p.category === activeCategory);
+  const filtered = activeCategory === 'Todos'
+    ? projects
+    : projects.filter((p) => p.category === activeCategory);
 
   return (
     <section
@@ -86,7 +85,7 @@ export default function Portfolio() {
     >
       <div className="container">
 
-        {/* Header row */}
+        {/* Header */}
         <div className="portfolio-header">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -94,25 +93,24 @@ export default function Portfolio() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="section-label">Proyectos Destacados</div>
+            <div className="section-label">Resultados reales</div>
             <h2 className="text-headline">
-              Trabajo que{' '}
-              <span style={{ color: 'var(--text-muted)', fontWeight: 400 }}>habla por sí solo.</span>
+              Negocios que{' '}
+              <span style={{ color: 'var(--text-muted)', fontWeight: 400 }}>ya están creciendo.</span>
             </h2>
+            <p style={{ color: 'var(--text-secondary)', marginTop: '1rem', fontSize: '0.9rem', lineHeight: 1.7, maxWidth: 480 }}>
+              Estos son algunos de nuestros clientes y los resultados que lograron.
+            </p>
           </motion.div>
 
-          {/* Filter tabs */}
           <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
                 style={{
-                  padding: '0.4rem 1rem',
-                  borderRadius: 'var(--radius-pill)',
-                  fontSize: '0.78rem',
-                  fontWeight: 500,
-                  border: '1px solid',
+                  padding: '0.4rem 1rem', borderRadius: 'var(--radius-pill)',
+                  fontSize: '0.78rem', fontWeight: 500, border: '1px solid',
                   transition: 'all 0.2s',
                   borderColor: activeCategory === cat ? 'rgba(255,255,255,0.3)' : 'var(--bg-border)',
                   background: activeCategory === cat ? 'rgba(255,255,255,0.08)' : 'transparent',
@@ -158,43 +156,46 @@ export default function Portfolio() {
                 }} />
 
                 <div>
+                  {/* Industry tag */}
                   <span style={{
                     display: 'block', fontSize: '0.62rem', fontWeight: 700,
                     letterSpacing: '0.12em', textTransform: 'uppercase',
-                    color: project.accent, marginBottom: '0.875rem',
+                    color: project.accent, marginBottom: '0.75rem',
                   }}>
-                    {project.tag}
+                    {project.industry}
                   </span>
+
+                  {/* Title */}
                   <h3 style={{
                     fontSize: '1.1rem', fontWeight: 800,
                     letterSpacing: '-0.02em', color: 'var(--white)',
-                    lineHeight: 1.25,
+                    lineHeight: 1.25, marginBottom: '0.875rem',
                   }}>
                     {project.title}
                   </h3>
+
+                  {/* Result highlight */}
+                  <div style={{
+                    display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+                    background: 'rgba(255,255,255,0.08)',
+                    border: '1px solid rgba(255,255,255,0.12)',
+                    borderRadius: 'var(--radius-pill)',
+                    padding: '0.3rem 0.75rem',
+                    fontSize: '0.75rem', fontWeight: 700,
+                    color: 'rgba(255,255,255,0.85)',
+                  }}>
+                    <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#4ade80', flexShrink: 0 }} />
+                    {project.result}
+                  </div>
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: '1.5rem' }}>
-                  <div style={{ display: 'flex', gap: '0.35rem', flexWrap: 'wrap' }}>
-                    {project.tech.slice(0, 2).map((t) => (
-                      <span key={t} style={{
-                        padding: '0.18rem 0.5rem',
-                        borderRadius: 'var(--radius-sm)',
-                        fontSize: '0.62rem', fontWeight: 500,
-                        background: 'rgba(255,255,255,0.08)',
-                        color: 'rgba(255,255,255,0.45)',
-                        border: '1px solid rgba(255,255,255,0.08)',
-                      }}>
-                        {t}
-                      </span>
-                    ))}
-                  </div>
+                {/* Arrow */}
+                <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1.5rem' }}>
                   <div style={{
                     width: 34, height: 34, borderRadius: '50%',
                     background: 'rgba(255,255,255,0.08)',
                     border: '1px solid rgba(255,255,255,0.12)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    flexShrink: 0, marginLeft: '0.75rem',
                   }}>
                     <ArrowUpRight size={14} color="rgba(255,255,255,0.6)" />
                   </div>
@@ -216,8 +217,7 @@ export default function Portfolio() {
             style={{
               position: 'fixed', inset: 0, zIndex: 200,
               background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(10px)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              padding: '1.25rem',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1.25rem',
             }}
           >
             <motion.div
@@ -229,44 +229,40 @@ export default function Portfolio() {
                 background: 'var(--bg-surface)',
                 border: '1px solid var(--bg-border)',
                 borderRadius: 'var(--radius-lg)',
-                padding: '2.5rem',
-                maxWidth: 520,
-                width: '100%',
-                maxHeight: '90vh',
-                overflowY: 'auto',
+                padding: '2.5rem', maxWidth: 500, width: '100%',
+                maxHeight: '90vh', overflowY: 'auto',
               }}
             >
               <span style={{ fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: selected.accent }}>
-                {selected.category}
+                {selected.industry}
               </span>
-              <h2 style={{ fontSize: 'clamp(1.3rem, 4vw, 1.75rem)', fontWeight: 800, letterSpacing: '-0.025em', margin: '0.75rem 0 1rem' }}>
+              <h2 style={{ fontSize: 'clamp(1.3rem, 4vw, 1.6rem)', fontWeight: 800, letterSpacing: '-0.025em', margin: '0.75rem 0 0.5rem' }}>
                 {selected.title}
               </h2>
+
+              {/* Result big */}
+              <div style={{
+                display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                background: 'rgba(74,222,128,0.08)', border: '1px solid rgba(74,222,128,0.2)',
+                borderRadius: 'var(--radius-pill)', padding: '0.4rem 1rem',
+                fontSize: '0.85rem', fontWeight: 700, color: '#4ade80',
+                marginBottom: '1.5rem',
+              }}>
+                <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#4ade80' }} />
+                Resultado: {selected.result}
+              </div>
+
               <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '2rem', fontSize: '0.9rem' }}>
                 {selected.description}
               </p>
-              <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '0.75rem' }}>
-                Tecnologías
-              </div>
-              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
-                {selected.tech.map((t) => (
-                  <span key={t} style={{
-                    padding: '0.3rem 0.75rem', borderRadius: 'var(--radius-sm)',
-                    fontSize: '0.78rem', fontWeight: 500,
-                    background: 'var(--bg-surface-2)', color: 'var(--text-secondary)',
-                    border: '1px solid var(--bg-border)',
-                  }}>
-                    {t}
-                  </span>
-                ))}
-              </div>
+
               <div style={{ display: 'flex', gap: '0.75rem' }}>
                 <button onClick={() => setSelected(null)} className="btn btn-ghost" style={{ flex: 1, justifyContent: 'center' }}>
                   Cerrar
                 </button>
-                <button className="btn btn-primary" style={{ flex: 1, justifyContent: 'center', gap: '0.5rem' }}>
-                  Ver sitio <ExternalLink size={13} />
-                </button>
+                <a href="#contacto" onClick={() => setSelected(null)} className="btn btn-primary" style={{ flex: 1, justifyContent: 'center', textAlign: 'center' }}>
+                  Quiero algo así
+                </a>
               </div>
             </motion.div>
           </motion.div>
@@ -290,23 +286,12 @@ export default function Portfolio() {
           border-radius: var(--radius-md);
           overflow: hidden;
         }
-
-        /* Tablet: 2 columns */
         @media (max-width: 900px) {
-          .portfolio-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-          .portfolio-header {
-            flex-direction: column !important;
-            align-items: flex-start !important;
-          }
+          .portfolio-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .portfolio-header { flex-direction: column !important; align-items: flex-start !important; }
         }
-
-        /* Mobile: 1 column */
         @media (max-width: 560px) {
-          .portfolio-grid {
-            grid-template-columns: 1fr !important;
-          }
+          .portfolio-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>

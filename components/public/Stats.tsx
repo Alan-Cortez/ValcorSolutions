@@ -2,13 +2,13 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { FolderOpen, Users, Sparkles, Globe } from 'lucide-react';
+import { TrendingUp, Users, Clock, ThumbsUp } from 'lucide-react';
 
 const stats = [
-  { value: 50, suffix: '+', label: 'Proyectos completados', Icon: FolderOpen },
-  { value: 30, suffix: '+', label: 'Clientes satisfechos',  Icon: Users },
-  { value: 5,  suffix: '',  label: 'Años de experiencia',   Icon: Sparkles },
-  { value: 12, suffix: '',  label: 'Países alcanzados',      Icon: Globe },
+  { value: 50, suffix: '+', label: 'Proyectos\nlanzados',       Icon: TrendingUp },
+  { value: 30, suffix: '+', label: 'Clientes\nfelices',         Icon: Users },
+  { value: 5,  suffix,  label: 'Años\nde experiencia',    Icon: Clock },
+  { value: 99, suffix: '%', label: 'Clientes que\nrecomiendan', Icon: ThumbsUp },
 ];
 
 function Counter({ target, suffix }: { target: number; suffix: string }) {
@@ -39,14 +39,11 @@ function Counter({ target, suffix }: { target: number; suffix: string }) {
 
 export default function Stats() {
   return (
-    <section
-      id="metricas"
-      style={{
-        borderTop: '1px solid var(--bg-border)',
-        borderBottom: '1px solid var(--bg-border)',
-        background: 'var(--bg-secondary)',
-      }}
-    >
+    <section id="metricas" style={{
+      borderTop: '1px solid var(--bg-border)',
+      borderBottom: '1px solid var(--bg-border)',
+      background: 'var(--bg-secondary)',
+    }}>
       <div className="container">
         <div className="stats-grid">
           {stats.map((stat, i) => {
@@ -63,19 +60,15 @@ export default function Stats() {
                 <Icon size={18} color="var(--text-muted)" strokeWidth={1.5} />
                 <div style={{
                   fontSize: 'clamp(1.75rem, 5vw, 3rem)',
-                  fontWeight: 900,
-                  letterSpacing: '-0.05em',
-                  color: 'var(--white)',
-                  lineHeight: 1,
+                  fontWeight: 900, letterSpacing: '-0.05em',
+                  color: 'var(--white)', lineHeight: 1,
                 }}>
                   <Counter target={stat.value} suffix={stat.suffix} />
                 </div>
                 <div style={{
-                  fontSize: '0.7rem',
-                  fontWeight: 600,
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
-                  color: 'var(--text-muted)',
+                  fontSize: '0.7rem', fontWeight: 600,
+                  letterSpacing: '0.08em', textTransform: 'uppercase',
+                  color: 'var(--text-muted)', whiteSpace: 'pre-line', lineHeight: 1.4,
                 }}>
                   {stat.label}
                 </div>
@@ -97,36 +90,15 @@ export default function Stats() {
           gap: 0.75rem;
           border-right: 1px solid var(--bg-border);
         }
-        .stat-item:last-child {
-          border-right: none;
-        }
-
-        /* Tablet: 2 columns */
+        .stat-item:last-child { border-right: none; }
         @media (max-width: 768px) {
-          .stats-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-          .stat-item {
-            border-right: none !important;
-            border-bottom: 1px solid var(--bg-border);
-          }
-          .stat-item:nth-child(odd) {
-            border-right: 1px solid var(--bg-border) !important;
-          }
-          .stat-item:nth-last-child(-n+2) {
-            border-bottom: none;
-          }
-          .stat-item {
-            padding: 2rem 1.5rem !important;
-          }
+          .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .stat-item { border-right: none !important; border-bottom: 1px solid var(--bg-border); padding: 2rem 1.5rem !important; }
+          .stat-item:nth-child(odd) { border-right: 1px solid var(--bg-border) !important; }
+          .stat-item:nth-last-child(-n+2) { border-bottom: none; }
         }
-
-        /* Mobile: 2 columns compact */
         @media (max-width: 480px) {
-          .stat-item {
-            padding: 1.5rem 1rem !important;
-            gap: 0.5rem !important;
-          }
+          .stat-item { padding: 1.5rem 1rem !important; gap: 0.5rem !important; }
         }
       `}</style>
     </section>
