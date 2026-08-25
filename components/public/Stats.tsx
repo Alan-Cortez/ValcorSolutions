@@ -2,12 +2,13 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { FolderOpen, Users, Sparkles, Globe } from 'lucide-react';
 
 const stats = [
-  { value: 50, suffix: '+', label: 'Proyectos entregados' },
-  { value: 30, suffix: '+', label: 'Clientes activos' },
-  { value: 5,  suffix: '',  label: 'Anos de experiencia' },
-  { value: 99, suffix: '%', label: 'Tasa de satisfaccion' },
+  { value: 50, suffix: '+', label: 'Proyectos completados', Icon: FolderOpen },
+  { value: 30, suffix: '+', label: 'Clientes satisfechos',  Icon: Users },
+  { value: 5,  suffix: '',  label: 'Años de experiencia',  Icon: Sparkles },
+  { value: 12, suffix: '',  label: 'Países alcanzados',     Icon: Globe },
 ];
 
 function Counter({ target, suffix }: { target: number; suffix: string }) {
@@ -42,52 +43,73 @@ export default function Stats() {
       id="metricas"
       style={{
         borderTop: '1px solid var(--bg-border)',
-        background: 'linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%)',
-        padding: '6rem 0',
+        borderBottom: '1px solid var(--bg-border)',
+        background: 'var(--bg-secondary)',
+        padding: '0',
       }}
     >
       <div className="container">
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: '1px',
-          background: 'var(--bg-border)',
-          borderRadius: 'var(--radius-md)',
-          overflow: 'hidden',
-        }}>
-          {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              style={{
-                background: 'var(--bg-primary)',
-                padding: '3rem 2rem',
-                textAlign: 'center',
-              }}
-            >
-              <div style={{
-                fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
-                fontWeight: 800,
-                letterSpacing: '-0.04em',
-                color: 'var(--text-primary)',
-                marginBottom: '0.5rem',
-              }}>
-                <Counter target={stat.value} suffix={stat.suffix} />
-              </div>
-              <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', letterSpacing: '0.04em', fontWeight: 500 }}>
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+          }}
+        >
+          {stats.map((stat, i) => {
+            const Icon = stat.Icon;
+            return (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.09 }}
+                style={{
+                  padding: '2.5rem 2rem',
+                  borderRight: i < 3 ? '1px solid var(--bg-border)' : 'none',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '0.75rem',
+                }}
+              >
+                {/* Icon */}
+                <Icon size={18} color="var(--text-muted)" strokeWidth={1.5} />
+
+                {/* Number */}
+                <div
+                  style={{
+                    fontSize: 'clamp(2rem, 4vw, 3rem)',
+                    fontWeight: 900,
+                    letterSpacing: '-0.05em',
+                    color: 'var(--white)',
+                    lineHeight: 1,
+                  }}
+                >
+                  <Counter target={stat.value} suffix={stat.suffix} />
+                </div>
+
+                {/* Label */}
+                <div
+                  style={{
+                    fontSize: '0.72rem',
+                    fontWeight: 600,
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    color: 'var(--text-muted)',
+                  }}
+                >
+                  {stat.label}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
 
       <style>{`
         @media (max-width: 640px) {
-          #metricas .container > div { grid-template-columns: repeat(2, 1fr); }
+          #metricas .container > div { grid-template-columns: repeat(2, 1fr) !important; }
+          #metricas .container > div > div { border-right: none !important; border-bottom: 1px solid var(--bg-border); }
         }
       `}</style>
     </section>

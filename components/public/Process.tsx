@@ -1,27 +1,38 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Search, Target, Pen, Code2, Rocket } from 'lucide-react';
 
 const steps = [
   {
     number: '01',
     title: 'Descubrimiento',
-    description: 'Analizamos tu negocio, tu competencia y tus objetivos para entender exactamente que necesitas construir.',
+    description: 'Analizamos tu negocio, competencia y objetivos para entender exactamente qué necesitas construir.',
+    Icon: Search,
   },
   {
     number: '02',
-    title: 'Diseno',
-    description: 'Creamos prototipos y disenos de alta fidelidad que reflejan tu identidad visual y priorizan la experiencia de usuario.',
+    title: 'Definición',
+    description: 'Investigamos, analizamos y convertimos los hallazgos en dirección clara y accionable.',
+    Icon: Target,
   },
   {
     number: '03',
-    title: 'Desarrollo',
-    description: 'Construimos tu producto con codigo limpio, performante y escalable usando las mejores practicas de la industria.',
+    title: 'Diseño',
+    description: 'Creamos interfaces intuitivas con claridad y propósito. Alta fidelidad desde el primer día.',
+    Icon: Pen,
   },
   {
     number: '04',
+    title: 'Desarrollo',
+    description: 'Construimos con código limpio, escalable y colaboramos estrechamente con tu equipo.',
+    Icon: Code2,
+  },
+  {
+    number: '05',
     title: 'Lanzamiento',
-    description: 'Desplegamos, optimizamos y te entregamos un producto listo para crecer, con soporte continuo de nuestro equipo.',
+    description: 'Probamos, refinamos y lanzamos experiencias digitales impecables.',
+    Icon: Rocket,
   },
 ];
 
@@ -29,6 +40,7 @@ export default function Process() {
   return (
     <section id="proceso" className="section" style={{ borderTop: '1px solid var(--bg-border)' }}>
       <div className="container">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -36,72 +48,114 @@ export default function Process() {
           transition={{ duration: 0.6 }}
           style={{ marginBottom: '5rem' }}
         >
-          <div className="section-label">Proceso</div>
-          <h2 className="text-headline">
-            Como llevamos tu idea<br />
-            <span style={{ color: 'var(--text-secondary)', fontWeight: 400 }}>a la realidad.</span>
+          <div className="section-label">Mi proceso de diseño</div>
+          <h2 className="text-headline" style={{ maxWidth: 540 }}>
+            Cómo llevamos tu idea{' '}
+            <span style={{ color: 'var(--text-muted)', fontWeight: 400 }}>a la realidad.</span>
           </h2>
         </motion.div>
 
-        {/* Steps */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0', position: 'relative' }}>
+        {/* Steps — horizontal editorial row */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(5, 1fr)',
+            position: 'relative',
+          }}
+        >
           {/* Connector line */}
           <div style={{
             position: 'absolute',
-            top: '2.25rem',
-            left: '12.5%',
-            right: '12.5%',
+            top: '1.5rem',
+            left: '10%',
+            right: '10%',
             height: '1px',
-            background: 'linear-gradient(to right, transparent, var(--blue-primary), transparent)',
+            background: 'linear-gradient(to right, transparent, var(--bg-border-hover), transparent)',
             zIndex: 0,
           }} />
 
-          {steps.map((step, i) => (
-            <motion.div
-              key={step.number}
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.12 }}
-              style={{ padding: '0 1.5rem', position: 'relative', zIndex: 1 }}
-            >
-              {/* Circle */}
-              <div style={{
-                width: 48,
-                height: 48,
-                borderRadius: '50%',
-                background: i === 0 ? 'var(--blue-primary)' : 'var(--bg-surface)',
-                border: `1px solid ${i === 0 ? 'var(--blue-primary)' : 'var(--bg-border)'}`,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: '1.75rem',
-                fontSize: '0.8rem',
-                fontWeight: 700,
-                color: i === 0 ? '#fff' : 'var(--text-muted)',
-                letterSpacing: '0.05em',
-              }}>
-                {step.number}
-              </div>
+          {steps.map((step, i) => {
+            const Icon = step.Icon;
+            return (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                style={{
+                  padding: '0 1rem',
+                  position: 'relative',
+                  zIndex: 1,
+                  textAlign: 'center',
+                }}
+              >
+                {/* Number circle */}
+                <div style={{
+                  width: 48,
+                  height: 48,
+                  borderRadius: '50%',
+                  background: i === 0 ? 'var(--white)' : 'var(--bg-surface)',
+                  border: `1px solid ${i === 0 ? 'var(--white)' : 'var(--bg-border)'}`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: '0 auto 2rem',
+                  fontSize: '0.72rem',
+                  fontWeight: 800,
+                  color: i === 0 ? '#000' : 'var(--text-muted)',
+                  letterSpacing: '0.05em',
+                }}>
+                  {step.number}
+                </div>
 
-              <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.75rem', letterSpacing: '-0.01em' }}>
-                {step.title}
-              </h3>
-              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
-                {step.description}
-              </p>
-            </motion.div>
-          ))}
+                {/* Icon */}
+                <div style={{ marginBottom: '0.75rem', display: 'flex', justifyContent: 'center' }}>
+                  <Icon
+                    size={18}
+                    color={i === 0 ? 'var(--white)' : 'var(--text-muted)'}
+                    strokeWidth={1.5}
+                  />
+                </div>
+
+                <h3 style={{
+                  fontSize: '0.875rem',
+                  fontWeight: 700,
+                  marginBottom: '0.6rem',
+                  letterSpacing: '-0.01em',
+                  color: i === 0 ? 'var(--white)' : 'var(--text-primary)',
+                }}>
+                  {step.title}
+                </h3>
+                <p style={{
+                  fontSize: '0.775rem',
+                  color: 'var(--text-secondary)',
+                  lineHeight: 1.65,
+                }}>
+                  {step.description}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
-
-        {/* Responsive mobile stack */}
-        <style>{`
-          @media (max-width: 768px) {
-            #proceso .steps-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
-            #proceso .connector { display: none !important; }
-          }
-        `}</style>
       </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          #proceso .container > div:last-child {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 2rem !important;
+          }
+          #proceso .container > div:last-child > div:first-child {
+            display: none !important;
+          }
+        }
+        @media (max-width: 540px) {
+          #proceso .container > div:last-child {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

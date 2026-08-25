@@ -4,30 +4,40 @@
    DESIGN TOKENS
    ============================================ */
 :root {
-  --bg-primary: #080808;
-  --bg-secondary: #0d0d10;
-  --bg-surface: #111116;
-  --bg-surface-2: #18181f;
-  --bg-border: rgba(255, 255, 255, 0.06);
-  --bg-border-hover: rgba(255, 255, 255, 0.12);
+  --bg-primary: #0c0c0c;
+  --bg-secondary: #111111;
+  --bg-surface: #181818;
+  --bg-surface-2: #1f1f1f;
+  --bg-border: rgba(255, 255, 255, 0.07);
+  --bg-border-hover: rgba(255, 255, 255, 0.14);
 
+  /* Blue kept as subtle accent only */
   --blue-primary: #2563eb;
   --blue-hover: #3b82f6;
-  --blue-glow: rgba(37, 99, 235, 0.4);
-  --blue-subtle: rgba(37, 99, 235, 0.08);
+  --blue-glow: rgba(37, 99, 235, 0.3);
+  --blue-subtle: rgba(37, 99, 235, 0.07);
 
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #475569;
+  /* White/gray scale (editorial) */
+  --white: #ffffff;
+  --gray-100: #f0f0f0;
+  --gray-300: #c0c0c0;
+  --gray-500: #888888;
+  --gray-700: #444444;
+
+  --text-primary: #f5f5f5;
+  --text-secondary: #999999;
+  --text-muted: #555555;
   --text-accent: #2563eb;
 
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
-  --radius-xl: 32px;
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
 
-  --shadow-blue: 0 0 40px rgba(37, 99, 235, 0.15);
-  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-blue: 0 0 40px rgba(37, 99, 235, 0.12);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-card-hover: 0 20px 60px rgba(0, 0, 0, 0.6);
 
   --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -70,35 +80,49 @@ input, textarea, select {
 ul, ol { list-style: none; }
 
 /* ============================================
-   TYPOGRAPHY
+   TYPOGRAPHY — Editorial Scale
    ============================================ */
 .text-display {
-  font-size: clamp(3rem, 8vw, 7rem);
-  font-weight: 800;
-  line-height: 1.05;
+  font-size: clamp(3.5rem, 9vw, 8.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.text-display-md {
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1;
   letter-spacing: -0.03em;
 }
 
 .text-headline {
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
 }
 
 .text-title {
-  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
   font-weight: 600;
   line-height: 1.3;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.01em;
 }
 
 .text-body { font-size: 1rem; line-height: 1.7; }
 .text-small { font-size: 0.875rem; line-height: 1.6; }
 .text-xs { font-size: 0.75rem; line-height: 1.5; }
+.text-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
 
 .text-muted { color: var(--text-secondary); }
 .text-accent { color: var(--blue-primary); }
+.text-white { color: var(--white); }
 
 /* ============================================
    LAYOUT
@@ -113,23 +137,24 @@ ul, ol { list-style: none; }
   padding: 7rem 0;
 }
 
+/* Editorial section label — thin line + small caps */
 .section-label {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
+  gap: 0.75rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--blue-primary);
-  margin-bottom: 1.25rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
 }
 
 .section-label::before {
   content: '';
-  width: 24px;
+  width: 28px;
   height: 1px;
-  background: var(--blue-primary);
+  background: var(--text-muted);
 }
 
 /* ============================================
@@ -141,25 +166,27 @@ ul, ol { list-style: none; }
   gap: 0.5rem;
   padding: 0.875rem 2rem;
   border-radius: var(--radius-sm);
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 600;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
   transition: all var(--transition);
   white-space: nowrap;
 }
 
+/* White primary button (editorial) */
 .btn-primary {
-  background: var(--blue-primary);
-  color: #fff;
-  box-shadow: 0 0 0 0 var(--blue-glow);
+  background: var(--white);
+  color: #000;
+  border: 1px solid var(--white);
 }
 
 .btn-primary:hover {
-  background: var(--blue-hover);
-  box-shadow: 0 0 24px var(--blue-glow);
+  background: transparent;
+  color: var(--white);
   transform: translateY(-1px);
 }
 
+/* Ghost button */
 .btn-ghost {
   background: transparent;
   color: var(--text-secondary);
@@ -170,6 +197,41 @@ ul, ol { list-style: none; }
   background: var(--bg-surface);
   color: var(--text-primary);
   border-color: var(--bg-border-hover);
+}
+
+/* Pill nav button */
+.btn-pill {
+  padding: 0.55rem 1.25rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--bg-border-hover);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all var(--transition);
+  letter-spacing: 0.02em;
+}
+
+.btn-pill:hover {
+  background: var(--white);
+  color: #000;
+  border-color: var(--white);
+}
+
+/* Blue accent button (kept for subtle use) */
+.btn-blue {
+  background: var(--blue-primary);
+  color: #fff;
+  border: 1px solid transparent;
+}
+
+.btn-blue:hover {
+  background: var(--blue-hover);
+  box-shadow: 0 0 24px var(--blue-glow);
+  transform: translateY(-1px);
 }
 
 /* ============================================
@@ -200,7 +262,7 @@ ul, ol { list-style: none; }
 /* ============================================
    SCROLLBAR
    ============================================ */
-::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg-primary); }
 ::-webkit-scrollbar-thumb { background: var(--bg-surface-2); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
@@ -209,8 +271,8 @@ ul, ol { list-style: none; }
    SELECTION
    ============================================ */
 ::selection {
-  background: var(--blue-primary);
-  color: #fff;
+  background: var(--white);
+  color: #000;
 }
 
 /* ============================================
@@ -228,7 +290,7 @@ ul, ol { list-style: none; }
 
 @keyframes pulse-blue {
   0%, 100% { box-shadow: 0 0 0 0 var(--blue-glow); }
-  50%       { box-shadow: 0 0 20px 4px var(--blue-glow); }
+  50%       { box-shadow: 0 0 16px 3px var(--blue-glow); }
 }
 
 @keyframes marquee {
@@ -241,11 +303,16 @@ ul, ol { list-style: none; }
   50%       { opacity: 0; }
 }
 
+@keyframes line-grow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
 /* ============================================
    GRADIENT TEXT
    ============================================ */
 .gradient-text {
-  background: linear-gradient(135deg, #fff 40%, var(--blue-hover) 100%);
+  background: linear-gradient(135deg, #fff 60%, rgba(255,255,255,0.5) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -268,20 +335,22 @@ ul, ol { list-style: none; }
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.375rem 0.875rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  background: var(--blue-subtle);
-  color: var(--blue-hover);
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  padding: 0.35rem 0.875rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  background: rgba(255,255,255,0.05);
+  color: var(--gray-300);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 .badge-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--blue-hover);
+  background: #4ade80;
+  box-shadow: 0 0 6px rgba(74,222,128,0.6);
   animation: pulse-blue 2s ease-in-out infinite;
 }
 
@@ -445,8 +514,8 @@ ul, ol { list-style: none; }
 }
 
 .form-input:focus {
-  border-color: var(--blue-primary);
-  box-shadow: 0 0 0 3px var(--blue-subtle);
+  border-color: rgba(255,255,255,0.3);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.04);
 }
 
 .form-input::placeholder { color: var(--text-muted); }

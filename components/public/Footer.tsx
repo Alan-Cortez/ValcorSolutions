@@ -7,10 +7,10 @@ const footerLinks = [
   {
     title: 'Servicios',
     links: [
-      { label: 'Diseno Web', href: '#servicios' },
+      { label: 'Diseño Web', href: '#servicios' },
       { label: 'Desarrollo a Medida', href: '#servicios' },
       { label: 'E-commerce', href: '#servicios' },
-      { label: 'SEO Tecnico', href: '#servicios' },
+      { label: 'SEO Técnico', href: '#servicios' },
     ],
   },
   {
@@ -28,41 +28,56 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer style={{
-      borderTop: '1px solid var(--bg-border)',
-      background: 'var(--bg-primary)',
-      padding: '4rem 0 2.5rem',
-    }}>
+    <footer
+      style={{
+        borderTop: '1px solid var(--bg-border)',
+        background: 'var(--bg-primary)',
+        padding: '4rem 0 2.5rem',
+      }}
+    >
       <div className="container">
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr auto auto',
-          gap: '4rem',
-          marginBottom: '3.5rem',
-          alignItems: 'start',
-        }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr auto auto',
+            gap: '4rem',
+            marginBottom: '3.5rem',
+            alignItems: 'start',
+          }}
+        >
           {/* Brand */}
           <div>
-            <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-              <Image src="/logo.png" alt="Valcor" width={32} height={32} style={{ objectFit: 'contain' }} />
-              <span style={{ fontWeight: 700, fontSize: '1rem', letterSpacing: '-0.02em' }}>Valcor</span>
+            <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
+              <Image src="/logo.png" alt="Valcor" width={28} height={28} style={{ objectFit: 'contain' }} />
+              <span style={{ fontWeight: 800, fontSize: '0.95rem', letterSpacing: '-0.025em', color: 'var(--white)' }}>
+                Valcor
+              </span>
             </Link>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.7, maxWidth: 300 }}>
-              Disenamos y desarrollamos experiencias digitales que impulsan el crecimiento de tu empresa.
+            <p
+              style={{
+                fontSize: '0.825rem',
+                color: 'var(--text-muted)',
+                lineHeight: 1.7,
+                maxWidth: 280,
+              }}
+            >
+              Diseñamos y desarrollamos experiencias digitales que impulsan el crecimiento de tu empresa.
             </p>
           </div>
 
           {/* Links */}
           {footerLinks.map((col) => (
             <div key={col.title}>
-              <div style={{
-                fontSize: '0.7rem',
-                fontWeight: 700,
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                color: 'var(--text-muted)',
-                marginBottom: '1.25rem',
-              }}>
+              <div
+                style={{
+                  fontSize: '0.65rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  color: 'var(--text-muted)',
+                  marginBottom: '1.25rem',
+                }}
+              >
                 {col.title}
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -71,12 +86,12 @@ export default function Footer() {
                     key={l.label}
                     href={l.href}
                     style={{
-                      fontSize: '0.875rem',
+                      fontSize: '0.85rem',
                       color: 'var(--text-secondary)',
                       transition: 'color 0.2s',
                     }}
-                    onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-primary)')}
-                    onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--white)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
                   >
                     {l.label}
                   </Link>
@@ -86,20 +101,23 @@ export default function Footer() {
           ))}
         </div>
 
-        <div style={{
-          borderTop: '1px solid var(--bg-border)',
-          paddingTop: '1.75rem',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
-          gap: '1rem',
-        }}>
-          <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-            &copy; {year} Valcor. Todos los derechos reservados.
+        {/* Bottom bar */}
+        <div
+          style={{
+            borderTop: '1px solid var(--bg-border)',
+            paddingTop: '1.75rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: '1rem',
+          }}
+        >
+          <span style={{ fontSize: '0.775rem', color: 'var(--text-muted)' }}>
+            © {year} Valcor. Todos los derechos reservados.
           </span>
-          <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-            Hecho con precision en Mexico
+          <span style={{ fontSize: '0.775rem', color: 'var(--text-muted)' }}>
+            Hecho con precisión en México
           </span>
         </div>
       </div>
