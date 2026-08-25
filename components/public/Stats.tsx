@@ -7,7 +7,7 @@ import { TrendingUp, Users, Clock, ThumbsUp } from 'lucide-react';
 const stats = [
   { value: 50, suffix: '+', label: 'Proyectos\nlanzados',       Icon: TrendingUp },
   { value: 30, suffix: '+', label: 'Clientes\nfelices',         Icon: Users },
-  { value: 5,  suffix,  label: 'Años\nde experiencia',    Icon: Clock },
+  { value: 5,  suffix: '',  label: 'Años\nde experiencia',    Icon: Clock },
   { value: 99, suffix: '%', label: 'Clientes que\nrecomiendan', Icon: ThumbsUp },
 ];
 
