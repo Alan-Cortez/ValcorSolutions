@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Check } from 'lucide-react';
 
 const services = ['Sitio Web','Tienda Online','Aparecer en Google','Portal para Clientes','Rediseño de Sitio','Soporte y Mantenimiento'];
 
@@ -56,7 +56,8 @@ export default function Contact() {
             viewport={{ once:true }} transition={{ duration:0.8, ease:[0.16,1,0.3,1] }}
             className="contact-cta-right">
             {[
-              { label:'Email',     value:'contacto@valcor.dev' },
+              { label:'Email',     value:'valcordigitalsolution@gmail.com' },
+              { label:'Teléfono',  value:'+52 8621277160' },
               { label:'Respuesta', value:'Menos de 24 horas' },
               { label:'Consulta',  value:'Gratis, sin compromiso' },
               { label:'Zona',      value:'México y toda LATAM' },
@@ -99,13 +100,13 @@ export default function Contact() {
               </p>
               <div style={{ display:'flex', flexDirection:'column', gap:'1rem' }}>
                 {[
-                  { emoji:'✅', text:'Respuesta en menos de 24 horas' },
-                  { emoji:'🎯', text:'Propuesta personalizada para tu negocio' },
-                  { emoji:'💬', text:'Sin tecnicismos, en tu idioma' },
-                  { emoji:'🔒', text:'Tus datos están seguros con nosotros' },
+                  { text:'Respuesta en menos de 24 horas' },
+                  { text:'Propuesta personalizada para tu negocio' },
+                  { text:'Asesoría técnica y estratégica' },
+                  { text:'Tus datos están seguros con nosotros' },
                 ].map((item) => (
                   <div key={item.text} style={{ display:'flex', alignItems:'center', gap:'0.75rem' }}>
-                    <span style={{ fontSize:'1rem' }}>{item.emoji}</span>
+                    <Check size={16} color="var(--blue-vivid)" />
                     <span style={{ fontSize:'0.875rem', color:'var(--text-secondary)' }}>{item.text}</span>
                   </div>
                 ))}
@@ -150,7 +151,7 @@ export default function Contact() {
                   <div className="form-field">
                     <label className="form-label">Cuéntanos más</label>
                     <textarea name="message" value={form.message} onChange={handleChange} required rows={4}
-                      placeholder="¿Qué quieres lograr? No hay respuestas incorrectas 😊"
+                      placeholder="¿Qué quieres lograr? Cuéntanos los detalles de tu proyecto."
                       className="form-input" style={{ resize:'vertical', lineHeight:1.7 }} />
                   </div>
                   {error && <p style={{ fontSize:'0.85rem', color:'#f87171' }}>{error}</p>}

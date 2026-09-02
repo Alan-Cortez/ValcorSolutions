@@ -74,7 +74,7 @@ export default function FAQ() {
                   gap: '1rem',
                 }}
               >
-                <span style={{ fontWeight: 500, fontSize: '0.95rem', lineHeight: 1.5 }}>
+                <span style={{ fontWeight: 500, fontSize: '0.95rem', lineHeight: 1.5, color: 'var(--text-primary)' }}>
                   {faq.q}
                 </span>
                 <span style={{
