@@ -4,35 +4,35 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { useState } from 'react';
 
-const categories = ['Todos', 'Tienda Online', 'Sitio Web', 'Aplicación'];
+const categories = ['Todos', 'Sistemas Web', 'Comercio B2B', 'App Móvil'];
 
 const projects = [
   {
     id: 1,
-    title: 'Agencia Inmobiliaria Apex',
-    category: 'Sitio Web',
-    result: '+80% más consultas por mes',
-    description: 'Rediseñamos su presencia digital por completo. Ahora los clientes los encuentran fácilmente y agendan citas directo desde el sitio.',
+    title: 'Grupo Inmobiliario Apex',
+    category: 'Sistemas Web',
+    result: '-40% tiempo en admin',
+    description: 'Desarrollamos un CRM a la medida que centraliza sus propiedades y automatiza el seguimiento de clientes potenciales.',
     industry: 'Bienes Raíces',
     color: '#0f1a2e',
     accent: '#2563eb',
   },
   {
     id: 2,
-    title: 'Boutique Elara',
-    category: 'Tienda Online',
-    result: '+40% ventas en 30 días',
-    description: 'Creamos su tienda online desde cero. Hoy venden ropa las 24 horas sin depender solo de Instagram.',
-    industry: 'Moda & Ropa',
+    title: 'Distribuidora Elara',
+    category: 'Comercio B2B',
+    result: '+60% eficiencia en pedidos',
+    description: 'Plataforma B2B que conecta su inventario ERP con sus distribuidores, automatizando la toma de pedidos 24/7.',
+    industry: 'Logística & Retail',
     color: '#1a0f2e',
     accent: '#7c3aed',
   },
   {
     id: 3,
-    title: 'Clínica Wellness Pro',
-    category: 'Aplicación',
-    result: 'Citas online: 0 → 120/mes',
-    description: 'Desarrollamos un portal donde sus pacientes reservan citas en línea. Eliminaron el 90% de llamadas telefónicas.',
+    title: 'Red Médica Wellness',
+    category: 'App Móvil',
+    result: '0 a 5,000 usuarios activos',
+    description: 'Aplicación nativa para gestión de expedientes y telemedicina, conectada en tiempo real con su sistema hospitalario.',
     industry: 'Salud & Bienestar',
     color: '#0a1a14',
     accent: '#059669',
@@ -40,30 +40,30 @@ const projects = [
   {
     id: 4,
     title: 'Corporativo Hernández',
-    category: 'Sitio Web',
-    result: 'Primer lugar en Google',
-    description: 'Construimos su sitio institucional optimizado para aparecer en búsquedas. Hoy sus clientes los encuentran antes que a la competencia.',
+    category: 'Sistemas Web',
+    result: 'Procesos 100% digitales',
+    description: 'Digitalizamos su proceso de auditoría mediante un portal web seguro para la recolección y análisis de documentos.',
     industry: 'Consultoría',
     color: '#1a1204',
     accent: '#d97706',
   },
   {
     id: 5,
-    title: 'Restaurante Lumina',
-    category: 'Sitio Web',
-    result: 'Reservas triplicadas',
-    description: 'Su nuevo sitio permite reservar mesa en segundos. Las reservas se triplicaron sin necesidad de contratar más personal.',
-    industry: 'Restaurantes',
+    title: 'Lumina Food Service',
+    category: 'Sistemas Web',
+    result: 'Inventario en tiempo real',
+    description: 'Sistema integral de gestión de cocina e inventarios que automatiza las compras a proveedores.',
+    industry: 'Food & Beverage',
     color: '#1a0808',
     accent: '#dc2626',
   },
   {
     id: 6,
     title: 'FinSecure Asesores',
-    category: 'Aplicación',
-    result: '60% menos tiempo en admin',
-    description: 'Portal para que sus clientes consulten estados de cuenta y documentos. Ahorraron horas de trabajo administrativo cada semana.',
-    industry: 'Finanzas',
+    category: 'App Móvil',
+    result: '+80% retención',
+    description: 'Portal de inversión y estado de cuenta interactivo que brinda transparencia total a sus inversionistas.',
+    industry: 'Fintech',
     color: '#050f18',
     accent: '#0891b2',
   },
@@ -261,7 +261,7 @@ export default function Portfolio() {
                   Cerrar
                 </button>
                 <a href="#contacto" onClick={() => setSelected(null)} className="btn btn-primary" style={{ flex: 1, justifyContent: 'center', textAlign: 'center' }}>
-                  Quiero algo así
+                  Iniciar mi proyecto
                 </a>
               </div>
             </motion.div>

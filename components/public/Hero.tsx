@@ -26,36 +26,35 @@ export default function Hero() {
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
             style={{ marginBottom: '2rem' }}>
             <span className="badge">
-              <span className="badge-dot" />
-              Aceptando nuevos clientes — cupos limitados
+              <span className="badge-dot" style={{ background: 'var(--blue-vivid)' }} />
+              Desarrollo de Software a la Medida
             </span>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
             <h1 className="text-display" style={{ color: 'var(--white)', marginBottom: '0.2rem' }}>
-              Tu negocio,
+              Desarrollo de
             </h1>
             <h1 className="text-display" style={{ color: 'var(--white)', marginBottom: '0.2rem' }}>
-              en línea.
+              software
             </h1>
             <h1 className="text-display" style={{ marginBottom: '1.75rem' }}>
-              <span className="accent">Y vendiendo.</span>
+              <span className="accent">a la medida.</span>
             </h1>
           </motion.div>
 
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.35 }}
             style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', marginBottom: '2.5rem', lineHeight: 1.8, maxWidth: '460px' }}>
-            Creamos sitios web que atraen clientes y generan ventas —{' '}
-            <strong style={{ color: 'var(--text-primary)' }}>sin que tú tengas que saber nada de tecnología.</strong>
+            Sistemas que integran tus áreas, automatizan procesos y escalan con tu negocio. Desarrollamos plataformas tecnológicas de alto nivel.
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
             style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
             <Link href="#contacto" className="btn btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-              Quiero mi sitio web <ArrowUpRight size={15} />
+              Iniciar mi proyecto <ArrowUpRight size={15} />
             </Link>
             <Link href="#proyectos" className="btn btn-ghost">
               Ver ejemplos
@@ -101,12 +100,12 @@ export default function Hero() {
               background: 'linear-gradient(135deg, rgba(37,99,255,0.12) 0%, transparent 60%)',
             }} />
             <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--blue-vivid)', marginBottom: '1.25rem' }}>
-              ✦ Resultados reales
+              ✦ Impacto en tu negocio
             </div>
             {[
-              { label: 'Más clientes potenciales', value: '+65%', bar: 65 },
-              { label: 'Más ventas online',         value: '+40%', bar: 40 },
-              { label: 'Satisfacción garantizada',  value: '99%',  bar: 99 },
+              { label: 'Procesos automatizados', value: '+75%', bar: 75 },
+              { label: 'Reducción de costos',    value: '40%',  bar: 40 },
+              { label: 'Escalabilidad del sistema', value: '100%', bar: 100 },
             ].map((item) => (
               <div key={item.label} style={{ marginBottom: '1rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.35rem' }}>
@@ -148,7 +147,7 @@ export default function Hero() {
               {[1,2,3,4,5].map(i => <Star key={i} size={11} fill="#fbbf24" color="#fbbf24" />)}
             </div>
             <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.65, fontStyle: 'italic', marginBottom: '0.875rem' }}>
-              "Las ventas de mi boutique crecieron 40% el primer mes. ¡Increíble!"
+              "El sistema a medida centralizó nuestra operación y redujo los tiempos de gestión a la mitad. Increíble."
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
               <div style={{
@@ -159,7 +158,7 @@ export default function Hero() {
               }}>SR</div>
               <div>
                 <div style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--white)' }}>Sofía Ramírez</div>
-                <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>Boutique Elara</div>
+                <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>Directora de Operaciones</div>
               </div>
             </div>
           </motion.div>

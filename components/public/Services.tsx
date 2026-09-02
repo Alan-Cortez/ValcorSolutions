@@ -4,12 +4,12 @@ import { motion } from 'framer-motion';
 import { Globe, ShoppingBag, Search, Phone, Wrench, LayoutDashboard } from 'lucide-react';
 
 const services = [
-  { icon: Globe,          title: 'Sitio Web que Vende',        description: 'Una presencia online profesional que le da confianza a tus clientes y los convierte en compradores desde el primer clic.', benefit: 'Más clientes potenciales' },
-  { icon: ShoppingBag,    title: 'Tienda Online',               description: 'Vende tus productos las 24 horas, los 7 días de la semana, sin depender de redes sociales ni ferias.', benefit: 'Ventas mientras duermes' },
-  { icon: Search,         title: 'Aparecer en Google',          description: 'Cuando alguien busca lo que tú ofreces, queremos que te encuentren a ti primero — no a tu competencia.', benefit: 'Clientes que te buscan' },
-  { icon: LayoutDashboard,title: 'Portal para tus Clientes',    description: 'Un espacio digital donde tus clientes pueden consultar pedidos, cotizaciones o reservas fácilmente.', benefit: 'Atención automática' },
-  { icon: Phone,          title: 'Tu Negocio en el Celular',    description: 'Un sitio que se ve perfecto en cualquier dispositivo. Tus clientes te encontrarán desde donde sea.', benefit: 'Siempre disponible' },
-  { icon: Wrench,         title: 'Soporte Sin Estrés',          description: 'Nos encargamos de que todo siga funcionando perfecto. Tú enfócate en tu negocio, nosotros en la tecnología.', benefit: 'Cero preocupaciones' },
+  { icon: LayoutDashboard,title: 'Desarrollo a la Medida',    description: 'Sistemas únicos diseñados específicamente para resolver los retos operativos y estratégicos de tu empresa.', benefit: 'Operación centralizada' },
+  { icon: Globe,          title: 'Plataformas Web',            description: 'Aplicaciones web robustas, rápidas y escalables que conectan a tu equipo y a tus clientes en la nube.', benefit: 'Acceso global' },
+  { icon: ShoppingBag,    title: 'Comercio B2B y B2C',         description: 'Plataformas de comercio electrónico avanzadas, integradas directamente con tus inventarios y sistemas ERP.', benefit: 'Ventas automatizadas' },
+  { icon: Search,         title: 'Integración de Sistemas',    description: 'Conectamos tus herramientas actuales (CRMs, ERPs, APIs) para lograr un flujo de información sin interrupciones.', benefit: 'Datos sincronizados' },
+  { icon: Phone,          title: 'Desarrollo Móvil',           description: 'Aplicaciones móviles diseñadas para ofrecer experiencias fluidas y poner tu negocio en manos de tus usuarios.', benefit: 'Alta disponibilidad' },
+  { icon: Wrench,         title: 'Mantenimiento y Soporte',    description: 'Aseguramos la estabilidad, seguridad y actualización continua de toda tu infraestructura tecnológica.', benefit: 'Infraestructura segura' },
 ];
 
 const containerVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } };
@@ -34,11 +34,11 @@ export default function Services() {
           style={{ marginBottom: '4rem', maxWidth: 700 }}>
           <div className="section-label-light">¿Qué hacemos?</div>
           <h2 className="text-headline" style={{ color: 'var(--light-text)' }}>
-            Todo lo que necesitas para{' '}
-            <span className="accent-light">crecer en internet.</span>
+            Soluciones tecnológicas para{' '}
+            <span className="accent-light">escalar tu operación.</span>
           </h2>
           <p style={{ color: 'var(--light-muted)', marginTop: '1.25rem', fontSize: '1rem', lineHeight: 1.75 }}>
-            Sin tecnicismos. Te explicamos todo en tu idioma y nos encargamos del resto.
+            Transformamos tus retos de negocio en software eficiente, seguro y 100% a la medida.
           </p>
         </motion.div>
 
