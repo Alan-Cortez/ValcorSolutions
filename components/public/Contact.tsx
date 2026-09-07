@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useSession } from 'next-auth/react';
+import { ArrowUpRight, Check } from 'lucide-react';
 import Link from 'next/link';
 
 const services = ['Sitio Web','Tienda Online','Aparecer en Google','Portal para Clientes','Rediseño de Sitio','Soporte y Mantenimiento'];
