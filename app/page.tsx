@@ -7,6 +7,7 @@ import Process from '@/components/public/Process';
 import Stats from '@/components/public/Stats';
 import Reviews from '@/components/public/Reviews';
 import FAQ from '@/components/public/FAQ';
+import InteractiveChat from '@/components/public/InteractiveChat';
 import Contact from '@/components/public/Contact';
 import Footer from '@/components/public/Footer';
 import Chatbot from '@/components/public/Chatbot';
@@ -24,6 +25,7 @@ export default function HomePage() {
         <Process />
         <Reviews />
         <FAQ />
+        <InteractiveChat />
         <Contact />
       </main>
       <Footer />
