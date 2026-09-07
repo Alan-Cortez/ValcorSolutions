@@ -2,15 +2,26 @@ import { auth } from './lib/auth';
 import { NextResponse } from 'next/server';
 
 export default auth((req) => {
-  const isAdminRoute = req.nextUrl.pathname.startsWith('/admin');
-  const isLoginPage = req.nextUrl.pathname === '/admin/login';
-  const isAuthenticated = !!req.auth;
+  const pathname = req.nextUrl.pathname;
+  const isAdminRoute = pathname.startsWith('/admin');
+  const isAdminLogin = pathname === '/admin/login';
+  const session = req.auth;
+  const isAuthenticated = !!session;
+  const isAdmin = !!(session?.user as any)?.isAdmin;
 
-  if (isAdminRoute && !isLoginPage && !isAuthenticated) {
-    return NextResponse.redirect(new URL('/admin/login', req.url));
+  // Rutas /admin: requieren autenticacion Y ser admin
+  if (isAdminRoute && !isAdminLogin) {
+    if (!isAuthenticated) {
+      return NextResponse.redirect(new URL('/login?callbackUrl=/admin/dashboard', req.url));
+    }
+    if (!isAdmin) {
+      // Usuario logueado pero no es admin -> redirigir al inicio
+      return NextResponse.redirect(new URL('/?error=unauthorized', req.url));
+    }
   }
 
-  if (isLoginPage && isAuthenticated) {
+  // Si ya es admin y va al login de admin, redirigir al dashboard
+  if (isAdminLogin && isAdmin) {
     return NextResponse.redirect(new URL('/admin/dashboard', req.url));
   }
 

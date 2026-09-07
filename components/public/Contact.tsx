@@ -1,16 +1,29 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Check } from 'lucide-react';
+import { useSession } from 'next-auth/react';
+import Link from 'next/link';
 
 const services = ['Sitio Web','Tienda Online','Aparecer en Google','Portal para Clientes','Rediseño de Sitio','Soporte y Mantenimiento'];
 
 export default function Contact() {
+  const { data: session } = useSession();
   const [form, setForm] = useState({ name:'', email:'', company:'', service:'', message:'' });
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState('');
+
+  // Pre-llenar con datos de sesion cuando el usuario esta logueado
+  useEffect(() => {
+    if (session?.user) {
+      setForm(f => ({
+        ...f,
+        name: f.name || session.user?.name || '',
+        email: f.email || session.user?.email || '',
+      }));
+    }
+  }, [session]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement|HTMLSelectElement>) =>
     setForm({ ...form, [e.target.name]: e.target.value });

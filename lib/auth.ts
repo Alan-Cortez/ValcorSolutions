@@ -10,23 +10,31 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
   ],
   callbacks: {
-    async signIn({ user }) {
-      try {
-        const result = await client.execute({
-          sql: 'SELECT id FROM admin_emails WHERE email = ?',
-          args: [user.email!],
-        });
-        return result.rows.length > 0;
-      } catch {
-        return false;
-      }
+    // Cualquier cuenta de Google puede iniciar sesion en el sitio publico
+    async signIn() {
+      return true;
     },
+    // Inyectamos isAdmin en la sesion para controlar acceso al panel
     async session({ session }) {
+      if (session.user?.email) {
+        try {
+          const result = await client.execute({
+            sql: 'SELECT id FROM admin_emails WHERE email = ?',
+            args: [session.user.email],
+          });
+          (session.user as any).isAdmin = result.rows.length > 0;
+        } catch {
+          (session.user as any).isAdmin = false;
+        }
+      }
       return session;
+    },
+    async jwt({ token, account }) {
+      return token;
     },
   },
   pages: {
-    signIn: '/admin/login',
-    error: '/admin/login',
+    signIn: '/login',
+    error: '/login',
   },
 });
