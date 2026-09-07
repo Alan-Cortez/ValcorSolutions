@@ -1,6 +1,7 @@
 import Navbar from '@/components/public/Navbar';
 import Hero from '@/components/public/Hero';
 import Services from '@/components/public/Services';
+import Catalog from '@/components/public/Catalog';
 import Portfolio from '@/components/public/Portfolio';
 import Process from '@/components/public/Process';
 import Stats from '@/components/public/Stats';
@@ -18,6 +19,7 @@ export default function HomePage() {
         <Hero />
         <Stats />
         <Services />
+        <Catalog />
         <Portfolio />
         <Process />
         <Reviews />
