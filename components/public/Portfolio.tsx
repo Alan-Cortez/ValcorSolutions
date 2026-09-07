@@ -2,11 +2,9 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-const categories = ['Todos', 'Sistemas Web', 'Comercio B2B', 'App Móvil'];
-
-const projects = [
+const initialProjects = [
   {
     id: 1,
     title: 'Grupo Inmobiliario Apex',
@@ -70,12 +68,40 @@ const projects = [
 ];
 
 export default function Portfolio() {
+  const [projectsList, setProjectsList] = useState(initialProjects);
   const [activeCategory, setActiveCategory] = useState('Todos');
-  const [selected, setSelected] = useState<(typeof projects)[0] | null>(null);
+  const [selected, setSelected] = useState<(typeof initialProjects)[0] | null>(null);
+
+  useEffect(() => {
+    fetch('/api/projects')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.length > 0) {
+          const formatted = data.map((p: any, i: number) => {
+            const isEven = i % 2 === 0;
+            return {
+              id: p.id,
+              title: p.title,
+              category: p.category || 'General',
+              result: p.featured ? 'Destacado' : 'Completado',
+              description: p.description,
+              industry: p.category || 'Tecnologia',
+              color: isEven ? '#0f1a2e' : '#1a0f2e',
+              accent: isEven ? '#2563eb' : '#7c3aed',
+            };
+          });
+          setProjectsList(formatted);
+        }
+      })
+      .catch(console.error);
+  }, []);
+
+  const dbCategories = Array.from(new Set(projectsList.map(p => p.category)));
+  const displayCategories = ['Todos', ...dbCategories];
 
   const filtered = activeCategory === 'Todos'
-    ? projects
-    : projects.filter((p) => p.category === activeCategory);
+    ? projectsList
+    : projectsList.filter((p) => p.category === activeCategory);
 
   return (
     <section
@@ -104,7 +130,7 @@ export default function Portfolio() {
           </motion.div>
 
           <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-            {categories.map((cat) => (
+            {displayCategories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}

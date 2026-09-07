@@ -118,6 +118,10 @@ export default function Footer() {
           </span>
           <span style={{ fontSize: '0.775rem', color: 'var(--text-muted)' }}>
             Hecho con precisión en México
+            <span style={{ margin: '0 0.5rem', opacity: 0.3 }}>|</span>
+            <Link href="/admin/login" style={{ color: 'var(--text-muted)', textDecoration: 'none' }} onMouseEnter={e => e.currentTarget.style.color='var(--white)'} onMouseLeave={e => e.currentTarget.style.color='var(--text-muted)'}>
+              Admin
+            </Link>
           </span>
         </div>
       </div>

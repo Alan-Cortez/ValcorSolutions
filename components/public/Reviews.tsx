@@ -2,8 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { Star } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
-const reviews = [
+const initialReviews = [
   { name: 'Carlos Mendez',   company: 'Grupo Inmobiliario Apex', role: 'Director General', content: 'Valcor transformó por completo nuestra presencia digital. El resultado superó nuestras expectativas en diseño, velocidad y conversión.', rating: 5 },
   { name: 'Sofía Ramírez',   company: 'Boutique Elara',          role: 'Fundadora',        content: 'Profesionales de primer nivel. Cada detalle del sitio refleja exactamente lo que queríamos y las ventas online crecieron un 40%.', rating: 5 },
   { name: 'Miguel Torres',   company: 'TechFlow Solutions',       role: 'CEO',              content: 'Entregaron a tiempo, sin sorpresas y con una calidad impresionante. El sitio se ve increíble en todos los dispositivos.', rating: 5 },
@@ -12,9 +13,7 @@ const reviews = [
   { name: 'Laura Castillo',  company: 'Academia Digital Pro',     role: 'Directora',        content: 'Construyeron nuestra plataforma desde cero. Robusta, elegante y exactamente lo que nuestros alumnos necesitaban.', rating: 5 },
 ];
 
-const all = [...reviews, ...reviews];
-
-function ReviewCard({ review }: { review: typeof reviews[0] }) {
+function ReviewCard({ review }: { review: typeof initialReviews[0] }) {
   return (
     <div className="glass" style={{
       minWidth: 340, padding: '1.75rem', marginRight: '1rem', flexShrink: 0,
@@ -48,6 +47,32 @@ function ReviewCard({ review }: { review: typeof reviews[0] }) {
 }
 
 export default function Reviews() {
+  const [reviewsList, setReviewsList] = useState(initialReviews);
+
+  useEffect(() => {
+    fetch('/api/reviews')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.length > 0) {
+          const formatted = data
+            .filter((r: any) => r.visible !== 0)
+            .map((r: any) => ({
+              name: r.author_name,
+              company: r.company,
+              role: r.role,
+              content: r.content,
+              rating: r.rating || 5,
+            }));
+          if (formatted.length > 0) {
+            setReviewsList(formatted);
+          }
+        }
+      })
+      .catch(console.error);
+  }, []);
+
+  const all = [...reviewsList, ...reviewsList];
+
   return (
     <section id="testimonios" style={{ background: 'var(--bg-secondary)', borderTop: '1px solid var(--bg-border)', overflow: 'hidden', padding: '7rem 0', position: 'relative' }}>
 
